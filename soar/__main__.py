@@ -42,7 +42,13 @@ def main():
     parser.add_argument('--options', type=str, help='Options to pass to the robot, as a JSON deserializable dictionary',
                         required=False)
     args = parser.parse_args()
-    if args.options is not None:
+
+    if args.options is None:
+        b_path = '../../../anaconda3/lib/python3.7/site-packages/soar/brains/my_brain.py'
+        w_path = '../../../anaconda3/lib/python3.7/site-packages/soar/worlds/bigEmptyWorld.py'
+        return_val = client.main(brain_path=b_path, world_path=w_path)
+
+    elif args.options is not None:
         args.options = json.loads(args.options)
         assert(type(args.options) is dict)  # Make sure the options are valid
     return_val = client.main(brain_path=args.brain_path, world_path=args.world_path, headless=args.headless,

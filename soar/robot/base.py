@@ -142,8 +142,8 @@ class BaseRobot(WorldObject):
             raise SoarIOError('BaseRobot has no real interface to connect to')
 
     def on_start(self):
-        """ Called when the controller of the robot is started. 
-        
+        """ Called when the controller of the robot is started.
+
         This method will always be called by the controller at most once per controller session, before the first step.
         """
         pass

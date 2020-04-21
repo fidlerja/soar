@@ -181,6 +181,13 @@ class Polygon(PointCollection, WorldObject):
             other: Either a `Polygon` or a `Wall` as the other object.
             eps (float, optional): The epsilon within which to consider a collision to have occurred.
         """
+        # try:
+        #     is_target = self.options['fill'] == 'purple'
+        # except:
+        #     is_target = False
+        # if is_target:
+        #     return 'target'
+
         if isinstance(other, Polygon):  # Might be able to do this better I suppose
             intersects = []
             for i in self.borders:
@@ -354,4 +361,3 @@ class World:
                     for single_collision in obj_collisions:
                         collisions.append((world_obj, single_collision))
         return collisions if len(collisions) > 0 else None
-

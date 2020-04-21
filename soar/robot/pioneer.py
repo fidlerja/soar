@@ -27,7 +27,7 @@ def gen_tone_pairs(note_string, bpm=120):
     (duration, tone) pairs corresponding to each note.
 
     Args:
-        note_string (str): A space-delimited list of notes. Notes should all be in the form `n/m(name)[#|b][octave]`. 
+        note_string (str): A space-delimited list of notes. Notes should all be in the form `n/m(name)[#|b][octave]`.
             Ex: `'1/4C'` produces a quarter note middle C. `'1/8A#7'` produces an eighth note A# in the 7th MIDI octave.
             `'1/4-'` produces a quarter rest. All of the MIDI notes in the range 1-127 can be played.
         bpm (int): The beats per minute or tempo to use to calculate durations.
@@ -58,8 +58,8 @@ class PioneerRobot(BaseRobot):
     type = 'Pioneer3'
     # Sonar poses relative to the robot's center
     sonar_poses = [Pose(0.08, 0.134, pi/2), Pose(0.122, 0.118, 5*pi/18), Pose(0.156, 0.077, pi/6),
-                   Pose(0.174, 0.0266, pi/18), Pose(0.174, -0.0266, -pi/18), Pose(0.156, -0.077, -pi/6),
-                   Pose(0.122, -0.118, -5*pi/18), Pose(0.08, -0.134, -pi/2)]
+                   Pose(0.174, 0.0266, pi/18), Pose(.153,0,0), Pose(0.174, -0.0266, -pi/18),
+                   Pose(0.156, -0.077, -pi/6), Pose(0.122, -0.118, -5*pi/18), Pose(0.08, -0.134, -pi/2)]
     SONAR_MAX = 1.5  # meters
     """ An abstract, universal Pioneer 3 robot. Instances of this class can be fully simulated, or used to communicate
     with an actual Pioneer3 robot over a serial port.
@@ -179,7 +179,7 @@ class PioneerRobot(BaseRobot):
 
         The array contains the latest distance sensed by each sonar, in order, clockwise from the robot's far left to
         its far right. Readings are given in meters and are accurate to the millimeter. If no distance was sensed by a
-        sonar, its entry in the array will be `None`, unless the robot option `raw_sonars` has been set to `True`, in 
+        sonar, its entry in the array will be `None`, unless the robot option `raw_sonars` has been set to `True`, in
         which case its entry will be `5.0`.
         """
         if self.simulated:  # If simulating, grab the data from the latest calculated sonars
@@ -455,7 +455,7 @@ class PioneerRobot(BaseRobot):
         """ Play a string of musical notes through the robot's piezoelectric speaker.
 
         Args:
-            note_string (str): A space-delimited list of notes. Notes should all be in the form `n/m(name)[#|b][octave]`. 
+            note_string (str): A space-delimited list of notes. Notes should all be in the form `n/m(name)[#|b][octave]`.
                 Ex: `'1/4C'` produces a quarter note middle C. `'1/8A#7'` produces an eighth note A# in the 7th MIDI octave.
                 `'1/4-'` produces a quarter rest. All of the MIDI notes in the range 1-127 can be played.
             bpm (int): The beats per minute or tempo at which to play the notes.
@@ -497,4 +497,3 @@ class PioneerRobot(BaseRobot):
         self.arcos.send_command(SOUNDTOG, 1)  # Enable the speaker
         sleep(1.0)
         self.play_notes(notes, bpm)
-
