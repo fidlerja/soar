@@ -48,7 +48,6 @@ def on_step(step_duration):
         robot._rv = 0
     # sonar detects target
     if robot._target_found:
-        robot.options['fill'] = 'red'
         heading = robot._target_heading
         if heading < 4:
             new_rv = .5

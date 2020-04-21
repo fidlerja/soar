@@ -44,8 +44,8 @@ def main():
     args = parser.parse_args()
 
     if args.options is None:
-        b_path = './brains/my_brain.py'
-        w_path = './worlds/bigEmptyWorld.py'
+        b_path = './brains/blankBrain.py'
+        w_path = './worlds/bigFrustrationWorld.py'
         return_val = client.main(brain_path=b_path, world_path=w_path)
 
     elif args.options is not None:
