@@ -44,8 +44,8 @@ def main():
     args = parser.parse_args()
 
     if args.options is None:
-        b_path = '../../../anaconda3/lib/python3.7/site-packages/soar/brains/my_brain.py'
-        w_path = '../../../anaconda3/lib/python3.7/site-packages/soar/worlds/bigEmptyWorld.py'
+        b_path = './brains/my_brain.py'
+        w_path = './worlds/bigEmptyWorld.py'
         return_val = client.main(brain_path=b_path, world_path=w_path)
 
     elif args.options is not None:
